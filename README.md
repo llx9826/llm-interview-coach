@@ -1,11 +1,26 @@
 # llm-interview-coach
 
-面向中文场景的大模型面试 `Codex skill`。  
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
+![Chinese First](https://img.shields.io/badge/language-Chinese%20First-red)
+![LLM Interview](https://img.shields.io/badge/focus-LLM%20Interview-blue)
+![Works with Codex](https://img.shields.io/badge/works%20with-Codex-black)
+![Works with Cursor](https://img.shields.io/badge/works%20with-Cursor-4F46E5)
+![Works with OpenClaw](https://img.shields.io/badge/works%20with-OpenClaw-0F766E)
+![Works with Claude Code](https://img.shields.io/badge/works%20with-Claude%20Code-7C3AED)
+
+面向中文场景的大模型面试 skill。  
 不是泛泛刷题，而是按真实大厂风格做 `项目深挖 + 追问 + 诊断 + 个性化训练闭环`。
 
 [English README](./README.en.md)
 
-`Codex skill` for Chinese-market LLM interviews: project deep dives, follow-up pressure, diagnosis, and personalized prep.
+这是一个可在多种 agent / AI coding 工作流中复用的 skill：
+
+- Codex
+- Cursor
+- OpenClaw
+- Claude Code
+
+只要你的工具支持 skill、rules、prompt pack、repo-based prompt 之一，就可以复用这个仓库。
 
 适合准备这些岗位：
 
@@ -84,19 +99,27 @@
 
 ## Quick Start
 
-把这个目录放进你的 Codex skills 目录后，直接这样用：
+### Codex
+
+把这个目录放进本地 skills 目录后，直接这样用：
 
 ```text
 用 llm-interview-coach 帮我做中文大厂大模型算法岗 mock interview
 ```
 
-或者：
+### Cursor / Claude Code / OpenClaw
+
+把这个仓库当成一个结构化 skill 使用：
+
+- `SKILL.md` 作为主入口
+- `references/` 作为按需读取的知识文件
+- `README.md` / `README.en.md` 作为说明和示例
+
+然后复用同样的触发语义，例如：
 
 ```text
 用 llm-interview-coach 按我的项目和背景做 personalize 模式
 ```
-
-再比如：
 
 ```text
 用 llm-interview-coach 深挖我这个 RAG 项目
@@ -235,6 +258,16 @@ llm-interview-coach/
 - 项目深挖
 - 评分和诊断
 - 个性化优先级
+
+### Cross-platform by design
+
+仓库结构刻意保持简单：
+
+- 一个主入口 `SKILL.md`
+- 一组可按需读取的 `references/`
+- 中英文两份 README
+
+这样设计的目的，就是让它不绑定某一个平台的专有格式，同时能在多个工具链里复用。
 
 ## File Guide
 

@@ -1,9 +1,26 @@
 # llm-interview-coach
 
-A `Codex skill` for preparing LLM interviews in a Chinese-market style.  
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
+![Chinese First](https://img.shields.io/badge/language-Chinese%20First-red)
+![LLM Interview](https://img.shields.io/badge/focus-LLM%20Interview-blue)
+![Works with Codex](https://img.shields.io/badge/works%20with-Codex-black)
+![Works with Cursor](https://img.shields.io/badge/works%20with-Cursor-4F46E5)
+![Works with OpenClaw](https://img.shields.io/badge/works%20with-OpenClaw-0F766E)
+![Works with Claude Code](https://img.shields.io/badge/works%20with-Claude%20Code-7C3AED)
+
+A Chinese-first LLM interview skill.  
 It focuses on `project deep dives + follow-up pressure + diagnosis + personalized training loops`, instead of generic question dumping.
 
 [中文 README](./README.md)
+
+This repository is meant to be reusable across multiple agent / AI coding workflows:
+
+- Codex
+- Cursor
+- OpenClaw
+- Claude Code
+
+If your tool supports skills, rules, prompt packs, or repo-based prompts, you can reuse this repository directly.
 
 Best suited for:
 
@@ -82,11 +99,23 @@ It does not just ask a question and stop. Each round is supposed to expose:
 
 ## Quick Start
 
-Drop this folder into your Codex skills directory, then use prompts like:
+### Codex
+
+Drop this folder into your local skills directory, then use prompts like:
 
 ```text
 Use llm-interview-coach to run a mock interview for a Chinese big-tech LLM algorithm role.
 ```
+
+### Cursor / Claude Code / OpenClaw
+
+Use this repo as a structured skill:
+
+- `SKILL.md` as the main entry
+- `references/` as on-demand knowledge
+- `README.md` / `README.en.md` as usage docs
+
+Then reuse prompts like:
 
 ```text
 Use llm-interview-coach to personalize training based on my resume and projects.
@@ -199,6 +228,16 @@ Keep only the modules that materially improve interview outcomes:
 - scoring and diagnosis
 - personalization priority
 
+### Cross-platform by design
+
+The repository intentionally keeps a simple shape:
+
+- one main entry file: `SKILL.md`
+- one set of on-demand references in `references/`
+- one Chinese README and one English README
+
+That keeps it portable across platforms instead of coupling it to one tool-specific format.
+
 ## Who This Is For
 
 This skill is especially useful if:
@@ -222,4 +261,3 @@ Potential next steps:
 ## License
 
 MIT
-
