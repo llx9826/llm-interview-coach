@@ -5,6 +5,8 @@
 
 [English README](./README.en.md)
 
+`Codex skill` for Chinese-market LLM interviews: project deep dives, follow-up pressure, diagnosis, and personalized prep.
+
 适合准备这些岗位：
 
 - 大模型算法工程师
@@ -148,6 +150,12 @@
 
 这个 skill 的目标不是只给题，而是把候选人一步步逼到真实面试的深度。
 
+更多可用于录屏或截图的素材：
+
+- [demo-terminal.txt](./demo-terminal.txt)
+- [demo-script.md](./demo-script.md)
+- [PROMO.md](./PROMO.md)
+
 ## Example Prompts
 
 ### Mock interview
@@ -277,4 +285,3 @@ llm-interview-coach/
 ## License
 
 MIT
-
