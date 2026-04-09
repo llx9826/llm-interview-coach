@@ -1,166 +1,135 @@
 # llm-interview-coach
 
-一个面向中文场景、偏真实大厂风格的 `Codex skill`，用于准备大模型算法岗、应用算法岗、RAG/Agent 岗、推理优化岗、训练/微调岗的技术面试。
+面向中文场景的大模型面试 `Codex skill`。  
+不是泛泛刷题，而是按真实大厂风格做 `项目深挖 + 追问 + 诊断 + 个性化训练闭环`。
 
-它不是一个泛泛的“通用面试助手”，而是一个强调下面几件事的面试训练器：
-
-- 项目深挖
-- 指标、baseline、失败案例
-- 中文大厂常见问法
-- 岗位分型
-- 个性化训练闭环
-
-## 设计目标
-
-按第一性原理，技术面试准备的核心只有 4 件事：
-
-1. 生成高价值问题
-2. 识别真实短板
-3. 用追问暴露问题
-4. 形成可执行训练闭环
-
-这个 skill 围绕这 4 件事设计，没有引入不必要的复杂度。
-
-## 适用岗位
+适合准备这些岗位：
 
 - 大模型算法工程师
 - LLM / GenAI 应用算法工程师
 - RAG / Agent 工程师
 - 推理优化 / Serving 工程师
 - 训练 / 微调 / 对齐工程师
-- 部分研究型岗位
+- 部分 Applied Scientist / 研究型岗位
 
-## 核心能力
+## Why This Exists
 
-- `mock`
-  一次只问一道题，随后继续追问，不直接把答案全部摊开。
+很多面试资料有两个问题：
 
-- `drill`
-  按主题生成刷题清单，适合集中补某一类短板。
+- 要么太泛，只会给一堆概念题
+- 要么太散，没有办法围绕候选人的真实项目持续训练
 
-- `review`
-  评审面试答案、项目表述、简历 bullet，指出风险点并改写。
+真实的大模型面试，尤其是中文大厂场景，更看重这些：
 
-- `plan`
-  生成 7 天或 14 天准备计划，按二八法则聚焦高频、高杀伤力问题。
+- 你能不能讲清楚项目目标、baseline、指标和失败方案
+- 你能不能把模型、数据、评测、服务串成一个系统
+- 你是不是只会背术语，还是能讲 tradeoff
+- 你说的提升到底是不是可信
 
-- `project`
-  对项目做高强度深挖，重点问目标、baseline、贡献、指标、失败和 tradeoff。
+这个 skill 就是为这类面试准备的。
 
-- `personalize`
-  根据候选人的背景、项目和目标岗位建立画像，生成个性化题库和训练顺序。
+## What Makes It Different
 
-## 适合什么场景
+### 1. 中文大厂风格
 
-- 你要准备中文大厂 LLM 算法面试
-- 你要练项目深挖
-- 你知道自己基础不差，但一到追问就答虚
-- 你想做 7 天、14 天的高密度冲刺
-- 你希望围绕自己的经历做长期训练，而不是刷泛题
-
-## Skill 结构
-
-```text
-llm-interview-coach/
-├── SKILL.md
-├── README.md
-└── references/
-    ├── question-bank.md
-    ├── china-bigtech.md
-    ├── rubric.md
-    ├── roles.md
-    ├── project-deep-dive.md
-    ├── diagnostic-output.md
-    └── personalization.md
-```
-
-## 各文件作用
-
-- `SKILL.md`
-  主入口，定义触发词、模式和使用流程。
-
-- `references/question-bank.md`
-  大模型面试核心题库。
-
-- `references/china-bigtech.md`
-  中文大厂风格题型、追问方式和常见压力测试。
-
-- `references/rubric.md`
-  回答评分标准。
-
-- `references/roles.md`
-  岗位分型，不同岗位问法不同。
-
-- `references/project-deep-dive.md`
-  项目深挖模板。
-
-- `references/diagnostic-output.md`
-  每轮 mock 后的标准化诊断格式。
-
-- `references/personalization.md`
-  候选人画像、短板地图和个性化训练原则。
-
-## 设计原则
-
-### 1. 中文优先
-
-默认按中文工作，适配中文大厂算法面常见风格。只有用户明确要求英文时才切换。
+不是通用英语面试脚本，默认按中文技术面风格来设计问题和追问，偏真实压力测试。
 
 ### 2. 项目优先
 
-真实面试里，项目深挖比背概念更容易拉开差距。  
-因此题库不是唯一核心，项目追问树才是。
+很多候选人概念题能答，一到项目深挖就开始虚。  
+这个 skill 把项目深挖放在核心位置，而不是附属功能。
 
 ### 3. 岗位分型
 
-应用算法岗、推理优化岗、训练岗、研究岗，本来就该问不同的东西。  
-这个 skill 会先判断岗位类型，再决定题目密度和追问方向。
+应用算法岗、推理优化岗、训练岗、研究岗，本来就该问不同的内容。  
+这个 skill 会先判断岗位，再决定题型和追问方式。
 
-### 4. 个性化优先于通用题库
+### 4. 个性化训练
 
-如果候选人已经给出项目和背景，不应该继续刷大量泛题。  
-应该优先围绕真实项目、已暴露的短板和目标岗位高频题训练。
+如果你已经有项目、简历、目标岗位，这个 skill 会优先围绕你的真实背景训练，而不是继续给泛题。
 
-### 5. 追问比标准答案更重要
+### 5. 训练闭环
 
-很多候选人第一问能答，第二问就开始虚。  
-所以这个 skill 强调 follow-up，而不是只给“标准答案大全”。
+不是“问完结束”，而是每轮输出：
 
-## 使用示例
+- 这题哪里答对了
+- 哪些地方答虚了
+- 面试官下一步会怎么追
+- 你的短板挂在哪一类
+- 下一步应该补什么
 
-### 1. 直接做 mock
+## Core Modes
+
+- `mock`
+  一次问一道题，然后继续追问。
+
+- `drill`
+  按主题集中刷题，适合补某一类短板。
+
+- `review`
+  复盘面试答案、简历 bullet、项目表述。
+
+- `plan`
+  生成 7 天或 14 天高密度训练计划。
+
+- `project`
+  只做项目深挖，盯着目标、baseline、指标、失败和 tradeoff 问。
+
+- `personalize`
+  建立候选人画像，生成个性化题库、风险问点和训练顺序。
+
+## Quick Start
+
+把这个目录放进你的 Codex skills 目录后，直接这样用：
 
 ```text
 用 llm-interview-coach 帮我做中文大厂大模型算法岗 mock interview
 ```
 
-### 2. 做个性化训练
+或者：
 
 ```text
 用 llm-interview-coach 按我的项目和背景做 personalize 模式
 ```
 
-### 3. 练项目深挖
+再比如：
 
 ```text
 用 llm-interview-coach 深挖我这个 RAG 项目
 ```
 
-### 4. 生成 7 天计划
-
 ```text
 用 llm-interview-coach 给我做一个大模型算法岗 7 天学习计划，按二八法则来
 ```
 
-### 5. 复盘一段答案
+## Example Prompts
+
+### Mock interview
 
 ```text
-用 llm-interview-coach review 我这段关于 LoRA 的回答
+用 llm-interview-coach 帮我做一轮中文大厂大模型算法岗 mock，重点考 RAG、LoRA 和推理优化
 ```
 
-## 题型覆盖
+### Project deep dive
 
-核心覆盖主题包括：
+```text
+用 llm-interview-coach 深挖我的项目：
+我做了一个企业知识库问答系统，采用 hybrid retrieval + rerank + generator，线上延迟 1.2s，回答采纳率提升 11%
+```
+
+### Personalized plan
+
+```text
+用 llm-interview-coach 按我的背景做个性化训练：
+- 3 年后端 / 算法工程经验
+- 做过 RAG、评测和推理服务
+- 弱项是 RLHF、训练细节、英文表达
+- 目标是 2 周后面中文大厂大模型算法岗
+```
+
+## What It Covers
+
+核心覆盖主题：
 
 - Transformer 基础
 - RoPE / 位置编码
@@ -175,27 +144,91 @@ llm-interview-coach/
 - 延迟、吞吐、显存、成本 tradeoff
 - 项目 ownership / baseline / 指标 / 失败案例
 
-## 适合开源吗
+## Repository Structure
 
-适合。
+```text
+llm-interview-coach/
+├── SKILL.md
+├── README.md
+├── LICENSE
+└── references/
+    ├── question-bank.md
+    ├── china-bigtech.md
+    ├── rubric.md
+    ├── roles.md
+    ├── project-deep-dive.md
+    ├── diagnostic-output.md
+    └── personalization.md
+```
 
-原因：
+## Design Principles
 
-- 主题足够垂直
-- 中文场景差异明确
-- 结构简单，容易复用
-- 没有绑定私有数据
-- 有明显的方法论，不只是题库堆砌
+### First principles
 
-## 后续可以继续增强的方向
+技术面试准备的核心只有 4 件事：
 
-- 公司风格进一步细分
+1. 生成高价值问题
+2. 识别真实短板
+3. 用追问暴露问题
+4. 形成可执行训练闭环
+
+### Occam's razor
+
+不引入花哨但低收益的复杂设计。  
+优先保留真正影响通过率的模块：
+
+- 岗位分型
+- 项目深挖
+- 评分和诊断
+- 个性化优先级
+
+## File Guide
+
+- `SKILL.md`
+  主入口，定义触发词、模式和主流程。
+
+- `references/question-bank.md`
+  通用大模型面试题库。
+
+- `references/china-bigtech.md`
+  中文大厂常见问法、压力测试、公司风格倾向。
+
+- `references/rubric.md`
+  回答评分标准。
+
+- `references/roles.md`
+  不同岗位该怎么问。
+
+- `references/project-deep-dive.md`
+  项目深挖骨架。
+
+- `references/diagnostic-output.md`
+  每轮 mock 后的诊断格式。
+
+- `references/personalization.md`
+  候选人画像、短板地图、个性化训练方法。
+
+## Who This Is For
+
+这个 skill 特别适合你，如果你符合下面任一条：
+
+- 已经有项目经验，但一被深挖就答虚
+- 想冲中文大厂大模型算法岗
+- 想用 7 天或 14 天高密度冲刺
+- 讨厌泛泛刷题，更想围绕真实经历训练
+- 想把 Codex 当成长期面试教练，而不是一次性问答工具
+
+## Roadmap
+
+后续可以继续增强：
+
+- 更细的公司风格拆分
 - 英文算法面版本
 - 简历解析和高风险问点抽取
-- 针对不同 seniority 的难度分层
+- 不同 seniority 的难度分层
 - 面试记录的长期记忆层
 
 ## License
 
-你可以根据自己的开源计划补充许可证，例如 `MIT`。
+MIT
 
