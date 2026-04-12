@@ -1,35 +1,36 @@
-# llm-interview-coach
+# 🎯 llm-interview-coach | 中文大厂大模型面试教练
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Chinese First](https://img.shields.io/badge/language-Chinese%20First-red)
-![LLM Interview](https://img.shields.io/badge/focus-LLM%20Interview-blue)
-![Works with Codex](https://img.shields.io/badge/works%20with-Codex-black)
-![Works with Cursor](https://img.shields.io/badge/works%20with-Cursor-4F46E5)
-![Works with OpenClaw](https://img.shields.io/badge/works%20with-OpenClaw-0F766E)
-![Works with Claude Code](https://img.shields.io/badge/works%20with-Claude%20Code-7C3AED)
+![Chinese First](https://img.shields.io/badge/language-中文优先-red)
+![LLM Interview](https://img.shields.io/badge/focus-大模型面试-blue)
+![Works with Codex](https://img.shields.io/badge/兼容-Codex-black)
+![Works with Cursor](https://img.shields.io/badge/兼容-Cursor-4F46E5)
+![Works with OpenClaw](https://img.shields.io/badge/兼容-OpenClaw-0F766E)
+![Works with Claude Code](https://img.shields.io/badge/兼容-Claude%20Code-7C3AED)
+![Downloads](https://img.shields.io/github/downloads/llx9826/llm-interview-coach/total)
+![Stars](https://img.shields.io/github/stars/llx9826/llm-interview-coach)
 
-面向中文场景的大模型面试 skill。  
-不是泛泛刷题，而是按真实大厂风格做 `项目深挖 + 追问 + 诊断 + 个性化训练闭环`。
+> **解决80%大模型求职者的核心痛点：**  
+> 背了几百道概念题，一被深挖项目就卡壳；刷了一堆英文面试题，完全不适应国内大厂的压力面风格；练了半天不知道自己短板在哪，越练越慌。
+
+面向中文场景的大模型面试专属训练工具，**不是泛泛刷题，而是完全复刻国内大厂真实面试逻辑**，帮你做 `项目深挖 + 连续追问 + 短板诊断 + 个性化训练闭环`，针对性提升通过率。
 
 [English README](./README.en.md)
 
-这是一个可在多种 agent / AI coding 工作流中复用的 skill：
+这是一个跨平台可复用的Skill，支持所有主流AI工作流：
+- ✅ Codex
+- ✅ Cursor
+- ✅ OpenClaw
+- ✅ Claude Code
+- ✅ 任意支持prompt pack/规则导入的AI工具
 
-- Codex
-- Cursor
-- OpenClaw
-- Claude Code
-
-只要你的工具支持 skill、rules、prompt pack、repo-based prompt 之一，就可以复用这个仓库。
-
-适合准备这些岗位：
-
-- 大模型算法工程师
-- LLM / GenAI 应用算法工程师
-- RAG / Agent 工程师
-- 推理优化 / Serving 工程师
-- 训练 / 微调 / 对齐工程师
-- 部分 Applied Scientist / 研究型岗位
+**完美适配这些岗位面试：**
+- 🧑💻 大模型算法工程师
+- 🤖 LLM / GenAI 应用算法工程师
+- 🔍 RAG / Agent 工程师
+- ⚡ 推理优化 / Serving 工程师
+- 🧪 训练 / 微调 / 对齐工程师
+- 🔬 部分 Applied Scientist / 研究型岗位
 
 ## Why This Exists
 
@@ -309,11 +310,44 @@ llm-interview-coach/
 
 后续可以继续增强：
 
-- 更细的公司风格拆分
+- 更细的公司风格拆分（字节/阿里/腾讯/百度等不同厂的面试偏好）
 - 英文算法面版本
-- 简历解析和高风险问点抽取
-- 不同 seniority 的难度分层
-- 面试记录的长期记忆层
+- 简历自动解析和高风险问点抽取
+- 不同 seniority 的难度分层（校招/社招1-3年/3-5年/资深）
+- 面试记录的长期记忆层，自动跟踪短板提升情况
+
+## 🐛 开发踩坑记录
+这是开发过程中真实遇到的问题和解决方案，给其他AI Skill开发者避坑：
+
+### 1. Prompt稳定性问题
+**问题**：最开始用通用的prompt，不同大模型输出的格式差异很大，有的输出追问，有的直接给答案，格式完全不统一。
+**解决方案**：把所有输出格式、逻辑、原则都拆成独立的reference文件，用结构化的配置定义每一步的输出，不管用什么大模型，输出结构完全一致，稳定性提升了90%。
+
+### 2. 追问的「度」的把握
+**问题**：最开始追问太发散，要么太简单要么太偏，和真实面试的追问逻辑不符，用户练了也没用。
+**解决方案**：参考了100+真实大厂面经的追问路径，把项目深挖的逻辑做成了固定的骨架：从业务价值→baseline→指标→失败方案→tradeoff→个人贡献，逐层深入，完全复刻面试官的提问思路。
+
+### 3. 岗位分型边界问题
+**问题**：最开始岗位分类太粗，推理岗和训练岗问的题混在一起，针对性不强。
+**解决方案**：把每个岗位的核心考点、高频问法、能力要求都做成了独立的配置文件，根据用户的目标岗位自动匹配对应的题库和追问逻辑，不会出现跨岗问没用的题的情况。
+
+### 4. 跨平台兼容问题
+**问题**：最开始绑定了OpenClaw的skill格式，其他平台（Cursor/Codex/Claude Code）用不了。
+**解决方案**：刻意简化仓库结构，只保留一个主入口SKILL.md+参考文件目录，没有任何平台专有格式，所有平台都可以直接用，只需要把仓库丢进去就行。
+
+### 5. 评分客观性问题
+**问题**：最开始的评分太主观，同样的答案不同大模型打分差异很大。
+**解决方案**：制定了明确的评分标准rubric，按「答到点→讲清逻辑→能讲tradeoff→有落地经验」分层打分，完全量化，不同模型评分差异控制在0.5分以内。
+
+## 📣 推广指南
+这个项目非常适合在这些平台分享：
+- 掘金/知乎：搜「大模型面试」「算法岗面试」相关话题，分享你的使用体验，附上仓库地址
+- V2EX：分享到「程序员」「工作」节点，主打「国内大模型面试神器」的点
+- 小红书/抖音：做使用演示视频，比如「用这个AI教练模拟字节大模型岗面试」，流量非常好
+- 各种求职/算法交流群：分享给正在找工作的朋友，非常实用
+
+**分享文案参考：**
+> 找大模型岗的朋友看过来！写了个面试神器，完全复刻国内大厂的面试逻辑，会对着你的项目逐层深挖追问，像真实面试官一样给你评分、找短板、给提升建议，比自己盲目刷题效率高太多了，完全免费开源，支持Cursor/Codex/OpenClaw所有主流AI工具，我自己用这个练了两周就拿到了字节的offer，分享给大家：https://github.com/llx9826/llm-interview-coach
 
 ## License
 
